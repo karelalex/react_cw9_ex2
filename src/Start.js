@@ -13,14 +13,15 @@ import {FioSuggestions} from "react-dadata";
 import 'react-dadata/dist/react-dadata.css';
 import {Card} from "primereact/card";
 import {Route, Switch} from "react-router-dom";
+import {API_KEY} from "./constants";
+import {useDispatch} from "react-redux";
+import {setUserInitials} from "./redux/action";
 
 
 const genders = [
     {label: 'Мужской', value: 'MALE'},
     {label: 'Женский', value: 'FEMALE'}
 ]
-
-const API_KEY = '7b4ed6885784c3bbae56027c41ea69ccb911fe7d'
 
 export const Start = ({location, history}) => {
     const items = [
@@ -36,7 +37,6 @@ export const Start = ({location, history}) => {
         }
     ]
     const activeIndex = items.findIndex((item) => item.path === location.pathname)
-    console.log(location, history)
     return (
         <Card style={{width: '500px', marginLeft: '20vw'}}>
             <MainTitle
@@ -84,9 +84,11 @@ const SingUpForm = ({history}) => {
     const {register, handleSubmit, setValue, watch} = useForm()
     const [fio, setFio] = useState()
     const [showFioFields, setShowFioField] = useState(false)
+    const dispatch = useDispatch()
     const onSubmit = (data) => {
         axios.post('https://jsonplaceholder.typicode.com/posts', data).then((resp) => {
-            console.log(resp)
+            console.log(resp, fio)
+            dispatch(setUserInitials(fio))
             history.push('/lk')
         })
     }

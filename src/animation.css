@@ -1,0 +1,22 @@
+.animated {
+    animation: move 3s ease-out 1;
+    width: inherit;
+}
+.animaContainer {
+    position: relative;
+    width: 100%;
+    min-height: 100px;
+}
+@keyframes move {
+    0% {
+        position: absolute;
+        top: -100vh;
+    }
+    99% {
+        position: absolute;
+        top: 0;
+    }
+    100% {
+        position: relative;
+    }
+}
