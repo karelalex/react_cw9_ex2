@@ -34,7 +34,13 @@ export const Start = ({location, history}) => {
             label: 'Регистрация', icon: 'pi pi-pencil', command: function () {
                 history.push(this.path)
             }, path: '/register'
+        },
+        {
+            label: 'Список проблем', icon: 'pi pi-list', command: function () {
+                history.push(this.path)
+            }, path: '/issues'
         }
+
     ]
     const activeIndex = items.findIndex((item) => item.path === location.pathname)
     return (
@@ -47,8 +53,8 @@ export const Start = ({location, history}) => {
                 <TabMenu model={items} activeIndex={activeIndex}/>
             </div>
             <Switch>
-                <Route path="/singin" component={SingInForm} />
-                <Route path="/register" component={SingUpForm} />
+                <Route path="/singin" component={SingInForm}/>
+                <Route path="/register" component={SingUpForm}/>
             </Switch>
         </Card>
     )
@@ -102,7 +108,7 @@ const SingUpForm = ({history}) => {
         setShowFioField(true)
     }
     const gender = watch('gender')
-    const birthday=watch('birthday')
+    const birthday = watch('birthday')
     return (
         <Card>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -138,7 +144,7 @@ const SingUpForm = ({history}) => {
                                 <SelectButton id="gender" {...register('gender')} options={genders} value={gender}/>
                             </div>
                         </>
-                        ) : (
+                    ) : (
                         <div className="p-d-flex p-jc-end">
                             <Button
                                 icon="pi pi-plus"
@@ -167,8 +173,8 @@ const SingUpForm = ({history}) => {
                         <InputMask
                             mask="+9 (999) 999-99-99"
                             id="phone" {...register('phone', {
-                                pattern: /^\+\d \(\d{3}\) \d{3}-\d{2}-\d{2}$/
-                            })} />
+                            pattern: /^\+\d \(\d{3}\) \d{3}-\d{2}-\d{2}$/
+                        })} />
                     </div>
                     <div className="p-field">
                         <label htmlFor="email">E-mail</label>

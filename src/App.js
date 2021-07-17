@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import {Start} from "./Start";
 import {Lk} from "./Lk";
 import {Ups} from "./Ups";
+import {IssueTracker} from "./IssueTracker/IssueTracker";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Switch>
                     <Route path={['/register', '/singin']} component={Start} />
                     <Route path="/lk" component={Lk} />
+                    <Route path="/issues" component={IssueTracker}/>
                     <Redirect from="/" to="/register" exact/>
                     <Route component={Ups} />
                 </Switch>
