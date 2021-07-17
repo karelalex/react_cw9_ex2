@@ -23,6 +23,7 @@ export const IssueDialog = ({visible, onHide, issueNumber, commentToCite, addCom
         try {
             await closeIssue(issueNumber)
             await lockIssue(issueNumber)
+            onHide()
         } catch (e) {
             alert("ошибка закрытия " + e)
         }

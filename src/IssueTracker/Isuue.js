@@ -53,8 +53,9 @@ export const Issue = () => {
     }
 
     const handleAddComment = (comment) => {
+        const newComments = comments || []
         setComments([
-            ...comments,
+            ...newComments,
             comment
         ])
     }

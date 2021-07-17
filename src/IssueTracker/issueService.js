@@ -28,7 +28,7 @@ export const addComment = (issueNumber, commentBody) =>
         .then(res => res.data)
 
 export const closeIssue = (issueNumber) =>
-    axios.patch(`${API_URL}/${issueNumber})`, {state: 'closed'})
+    axios.patch(`${API_URL}/${issueNumber}`, {state: 'closed'})
 
 export const lockIssue = (issueNumber) =>
     axios.put(`${API_URL}/${issueNumber}/lock`, {
